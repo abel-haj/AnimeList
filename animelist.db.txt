@@ -1,0 +1,20 @@
+ANIME
+-----
+id
+name
+img
+featured img
+release date (month/year)
+rating
+description
+votes
+
+
+COMMENT
+-------
+id
+creation date
+comment
+email
+name
+anime id

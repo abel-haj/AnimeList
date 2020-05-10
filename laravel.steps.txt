@@ -1,0 +1,8 @@
+install nodejs
+install composer
+
+npm install
+npm run watch
+edit .env file
+php artisan migrate --seed
+php artisan serve
