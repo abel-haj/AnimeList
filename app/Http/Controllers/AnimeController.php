@@ -52,8 +52,8 @@ class AnimeController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'image' => 'image|nullable|9999',
-            'feat-image' => 'image|nullable|9999',
+            'image' => 'mimes:jpg,jpeg,png,gif,svg|nullable|max:9999',
+            'feat-image' => 'mimes:jpg,jpeg,png,gif,svg|nullable|max:9999',
             'date' => 'required',
             'rate' => 'required',
             'desc' => 'required'
@@ -70,17 +70,25 @@ class AnimeController extends Controller
             // Filename to store
             $coverImage= $filename.'_'.time().'.'.$extension;
             // Upload Image
-            $path = $request->file('image')->storeAs('public/image/cover', $fileNameToStore);
+            $request->file('image')->move(public_path() . '/images/cover/', $coverImage);
+            // $path = $request->file('image')->storeAs('public/images/cover', $coverImage);
         } else {
             $coverImage = 'nocover.jpg';
         }
         // Handle File Upload for cover image
         if($request->hasFile('feat-image')){
+            // $filenameWithExt = $request->file('feat-image')->getClientOriginalName();
+            // $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // $extension = $request->file('feat-image')->getClientOriginalExtension();
+            // $featImage= $filename.'_featured_'.time().'.'.$extension;
+            // $path = $request->file('feat-image')->storeAs('public/images/featured', $featImage);
+
             $filenameWithExt = $request->file('feat-image')->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('feat-image')->getClientOriginalExtension();
-            $featImage= $filename.'_featured_'.time().'.'.$extension;
-            $path = $request->file('feat-image')->storeAs('public/image/featured', $fileNameToStore);
+            $featImage= $filename.'_'.time().'.'.$extension;
+            $request->file('feat-image')->move(public_path() . '/images/featured/', $featImage);
+            // $path = $request->file('feat-image')->storeAs('public/images/featured', $featImage);
         } else {
             $featImage = 'nofeatured.jpg';
         }
