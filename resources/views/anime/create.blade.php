@@ -16,7 +16,7 @@
 			<div class="card m-auto d-block">
 				<div class="card-header bg-success text-white"><h3>{{ __('New Anime') }}</h3></div>
 				<div class="card-body">
-				<form action="{{ route('anime.store') }}" method="POST" charset="utf-8" enctype="multipart/data">
+				<form action="{{ route('anime.store') }}" method="POST" charset="utf-8" enctype="multipart/form-data">
 				{{ csrf_field() }}
 					<fieldset>
 						<div class="form-group ">

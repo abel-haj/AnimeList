@@ -15,12 +15,40 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $anime = Anime::orderBy('anime_rating', 'desc')->limit(5)->get();
+        $rated_anime = Anime::orderBy('anime_rating', 'desc')
+        ->orderBy('created_at', 'desc')->limit(5)->get();
+
+        $voted_anime = Anime::orderBy('anime_votes', 'desc')
+        ->orderBy('created_at', 'desc')->limit(5)->get();
     
-        $title = 'Welcome to ';
+        $title = 'Welcome';
         return view('pages.home')->with([
             'title' => $title,
-            'f_anime' => $anime
+            'r_anime' => $rated_anime,
+            'v_anime' => $voted_anime
+            ]);
+    }
+
+    public function anime()
+    {
+        $all_anime =DB::Table('animes')->orderBy('anime_name', 'asc')
+        ->paginate(15);
+
+        $title = 'Browse All Anime';
+        return view('pages.anime')->with([
+            'title' => $title,
+            'all_anime' => $all_anime
+            ]);
+    }
+
+    public function display($id)
+    {
+        $anime = Anime::find($id);
+
+        $title = $anime->anime_name;
+        return view('pages.display')->with([
+            'title' => $title,
+            'anime' => $anime
             ]);
     }
 

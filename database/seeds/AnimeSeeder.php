@@ -205,24 +205,24 @@ class AnimeSeeder extends Seeder
             'anime_votes' => 1000
         ],[
             'anime_name' => 'Anime Move',
-            'anime_image' => 'none',
-            'anime_featured_image' => 'none',
+            'anime_image' => 'nocover.jpg',
+            'anime_featured_image' => 'nofeatured.jpg',
             'anime_release_date' => '2000/1/2',
             'anime_description' => 'Some description...',
             'anime_rating' => 8,
             'anime_votes' => 170
         ],[
             'anime_name' => 'U Anime',
-            'anime_image' => 'none',
-            'anime_featured_image' => 'none',
+            'anime_image' => 'nocover.jpg',
+            'anime_featured_image' => 'nofeatured.jpg',
             'anime_release_date' => '2000/1/2',
             'anime_description' => 'Some description...',
             'anime_rating' => 5,
             'anime_votes' => 100
         ],[
             'anime_name' => 'V Anime',
-            'anime_image' => 'none',
-            'anime_featured_image' => 'none',
+            'anime_image' => 'nocover.jpg',
+            'anime_featured_image' => 'nofeatured.jpg',
             'anime_release_date' => '2000/1/2',
             'anime_description' => 'Some description...',
             'anime_rating' => 5,

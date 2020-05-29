@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container bg-darker text-center py-4">
+<div class="container bg-darker text-center py-4" style="">
     <div class="row">
         <div class="col-md-12">
             <h1 class="display-3 text-bold">Contact information</h1>

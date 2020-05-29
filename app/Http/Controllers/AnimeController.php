@@ -102,7 +102,7 @@ class AnimeController extends Controller
         $anime->anime_description = $request->input('desc');
         $anime->save();
 
-        return redirect('/admin/anime')->with('Success', 'Anime created!');
+        return redirect('/admin/anime')->with('success', 'Anime created!');
     }
 
     /**
@@ -126,7 +126,8 @@ class AnimeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $anime = Anime::find($id);
+        return view('anime.edit')->with('anime', $anime);
     }
 
     /**
@@ -138,7 +139,47 @@ class AnimeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'mimes:jpg,jpeg,png,gif,svg|nullable|max:9999',
+            'feat-image' => 'mimes:jpg,jpeg,png,gif,svg|nullable|max:9999',
+            'date' => 'required',
+            'rate' => 'required',
+            'desc' => 'required'
+        ]);
+
+        if($request->hasFile('image')){
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $coverImage= $filename.'_'.time().'.'.$extension;
+            $request->file('image')->move(public_path() . '/images/cover/', $coverImage);
+                
+            $anime = Anime::find($id);
+            $anime->anime_image = $coverImage;
+            $anime->save();
+        }
+
+        if($request->hasFile('feat-image')){
+            $filenameWithExt = $request->file('feat-image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('feat-image')->getClientOriginalExtension();
+            $featImage= $filename.'_'.time().'.'.$extension;
+            $request->file('feat-image')->move(public_path() . '/images/featured/', $featImage);
+                
+            $anime = Anime::find($id);
+            $anime->anime_featured_image = $featImage;
+            $anime->save();
+        }
+
+        $anime = Anime::find($id);
+        $anime->anime_name = $request->input('name');
+        $anime->anime_release_date = $request->input('date');
+        $anime->anime_rating = $request->input('rate');
+        $anime->anime_description = $request->input('desc');
+        $anime->save();
+
+        return redirect('/admin/anime')->with('success', 'Anime updated!');
     }
 
     /**
@@ -149,6 +190,8 @@ class AnimeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $anime = Anime::find($id);
+        $anime->delete();
+        return redirect('/admin/anime')->with('success', 'Anime Removed!');
     }
 }

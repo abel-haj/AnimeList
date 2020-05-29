@@ -21,9 +21,15 @@
 				@foreach ($all_anime as $anime)
 					<tr class="table-dark">
 						<!-- <th scope="row"></th> -->
-						<td> {{ $anime->anime_name }} </td>
-						<td class="text-right"> <a class="btn btn-sm btn-warning" href="/admin/anime/{{$anime->anime_id}}"> Modify </a></td>
-						<td> <a class="btn btn-sm btn-danger" href="/admin/anime/{{$anime->anime_id}}"> Delete </a></td>
+						<td> <a href="{{ route('anime.update', $anime->anime_id) }}"> {{ $anime->anime_name }} </a> </td>
+						<td class="text-right"> <a class="btn btn-sm btn-warning" href="/admin/anime/{{$anime->anime_id}}/edit"> Modify </a></td>
+						<td>
+							<form action="{{ route('anime.destroy', $anime->anime_id) }}" method="POST" charset="utf-8">
+								{{ csrf_field() }}
+								<input type="hidden" name="_method" value="DELETE"/>
+								<input type="submit" class="btn btn-sm btn-danger" href="/admin/anime/{{$anime->anime_id}}" value="Delete"/>
+							</form>
+						</td>
 					</tr>
 				@endforeach
 				</tbody>

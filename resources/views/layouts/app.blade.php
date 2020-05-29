@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@if (isset($title)) {{ $title.' - ' }} @endif {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -29,13 +29,17 @@
     <!-- <script type="application/javascript" src="{{ asset('js/owl.carousel.min.js') }}" defer></script> -->
     <style>
         .bg-darker {background-color:#1c1e22;}
+        html, body, div#app {height:100%;}
+        /* main, main > div.container {min-height:100%} */
+        main {min-height:80%}
+        footer {height:20%}
     </style>
     @yield('style')
 </head>
 <body>
     <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand font-weight-bold" href="#">{{ config('app.name', 'Laravel') }}</a>
+        <a class="navbar-brand font-weight-bold" href="{{ route('home') }}">{{ config('app.name', 'Laravel') }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -49,9 +53,9 @@
                 @endif
                 </a>
             </li>
-            <li class="nav-item {{ (strpos(Route::currentRouteName(), 'featured') === 0) ? 'active' : '' }}">
-                <a class="nav-link" href="#">{{ __('Featured') }}
-                @if (strpos(Route::currentRouteName(), 'featured') === 0)
+            <li class="nav-item {{ (strpos(Route::currentRouteName(), 'anime') === 0) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('anime') }}">{{ __('Anime') }}
+                @if (strpos(Route::currentRouteName(), 'anime') === 0)
                     <span class='sr-only'>(current)</span>
                 @endif
                 </a>

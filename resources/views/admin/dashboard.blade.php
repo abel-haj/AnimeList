@@ -17,30 +17,30 @@
         </div>
     </div>
     <div class="row mb-5">
-        <div class="col-md-4">
+        <div class="col-md-6">
 		<div class="card border-radius-25 text-white bg-success">
 			<div class="card-body">
 				<h4 class="card-title">Create Anime</h4>
-				<a href="{{ route('anime.create') }}" class="btn btn-success text-weight-bold">CREATE</a>
+				<a href="{{ route('anime.create') }}" class="btn btn-success float-right">CREATE</a>
 			</div>
 		</div>
         </div>
-        <div class="col-md-4">
-		<div class="card border-radius-25 text-white bg-danger">
+        <div class="col-md-6">
+		<div class="card border-radius-25 text-white bg-info">
 			<div class="card-body">
-				<h4 class="card-title">Delete Anime</h4>
-				<a href="#" class="btn btn-danger">DELETE</a>
+				<h4 class="card-title">Browse Anime <sm class=""> (Update/Delete) </sm></h4>
+				<a href="{{ route('anime.index') }}" class="btn btn-info float-right">LIST</a>
 			</div>
 		</div>
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
 		<div class="card border-radius-25 text-white bg-warning">
 			<div class="card-body">
 				<h4 class="card-title">Update Anime</h4>
 				<a href="#" class="btn btn-warning">UPDATE</a>
 			</div>
 		</div>
-        </div>
+        </div> -->
         <!-- <div class="col-md-3">
 		<div class="card">
 			<div class="card-body">

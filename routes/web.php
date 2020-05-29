@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@index');
 Route::get('/home', 'PagesController@index')->name('home');
+Route::get('/anime', 'PagesController@anime')->name('anime');
+Route::get('/anime/{id}', 'PagesController@display')->name('display');
 Route::get('/about', 'PagesController@about')->name('about');
 Route::get('/contact', 'PagesController@contact')->name('contact');
 
@@ -29,5 +31,3 @@ Route::get('/admin/manage', 'DashboardController@manage')->name('manage');
 Auth::routes(['register' => false]);
 
 Route::resource('admin/anime', 'AnimeController');
-
-//Route::get('/admin/dashboard', 'DashboardController@index');
