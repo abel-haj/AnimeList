@@ -1,8 +1,18 @@
-install nodejs
-install composer
 
-npm install
-npm run watch
-edit .env file
-php artisan migrate --seed
-php artisan serve
+1) Install nodejs
+	https://nodejs.org/dist/v14.2.0/node-v14.2.0-x64.msi
+
+2) Install composer
+	https://getcomposer.org/Composer-Setup.exe
+
+3) Create a DB & edit .env file to match your server congif(db name, user, pass)
+
+3) Open cmd in the project directory and run
+	composer install
+	npm install
+	npm run watch
+	php artisan migrate:fresh --seed
+	php artisan key:generate
+	php artisan serve
+
+4) Open your browser at localhost:8000/
