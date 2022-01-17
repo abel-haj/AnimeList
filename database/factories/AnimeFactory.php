@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Anime;
+use App\Models\Anime;
 use Faker\Generator as Faker;
 
 $factory->define(Anime::class, function (Faker $faker) {
