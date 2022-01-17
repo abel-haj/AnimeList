@@ -1,4 +1,4 @@
-# AnimeList
+# AnimeList (under construction)
 A side project for fun and to try to expand knowledge about Laravel; Anime review website using laravel
 
 # Dependencies
