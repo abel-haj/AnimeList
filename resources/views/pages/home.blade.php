@@ -26,32 +26,33 @@
     @if (count($r_anime) > 0)
         <div class="card w-100 mb-5">
         <h1 class="card-header">Most Rated</h1>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div id="ratingCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
             @foreach ($r_anime as $i=>$anime)
-                <li data-target="#carouselExampleIndicators" data-slide-to="{{ $i }}"
+                <li data-target="#ratingCarousel" data-slide-to="{{ $i }}"
                 class="@if ($i == 0) active @endif"></li>
             @endforeach
             </ol>
             <div class="carousel-inner">
             @foreach ($r_anime as $i=>$a)
-                <a href="{{ route('display', $a->anime_id) }}" title="{{ $a->anime_name }}">
                 <div class="carousel-item @if ($i == 0) active @endif">
-                    <img class="carousel-image d-block w-100 h-100"
-                    src="{{ asset('images/featured/'.$a->anime_featured_image) }}" alt="{{ $a->anime_name }}">
-                    <div class="carousel-caption d-none d-md-block bg-dark-transparent">
-                        <h5>{{ $a->anime_name }}</h5>
-                        <p class="text-truncate">{{ $a->anime_description }}</p>
-                    </div>
+                    <a href="{{ route('display', $a->anime_id) }}" title="{{ $a->anime_name }}">
+                        <img class="carousel-image d-block w-100 h-100"
+                        src="{{ $a->anime_featured_image }}" alt="{{ $a->anime_name }}">
+                        <!-- src="{{ asset('images/featured/'.$a->anime_featured_image) }}" alt="{{ $a->anime_name }}"> -->
+                        <div class="carousel-caption d-none d-md-block bg-dark-transparent">
+                            <h5>{{ $a->anime_name }}</h5>
+                            <p class="text-truncate">{{ $a->anime_description }}</p>
+                        </div>
+                    </a>
                 </div>
-                </a>
             @endforeach
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#ratingCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{ __('Previous') }}</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#ratingCarousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{ __('Next') }}</span>
             </a>
@@ -70,30 +71,33 @@
     @if (count($v_anime) > 0)
         <div class="card w-100 my-5">
         <h1 class="card-header">Most Voted</h1>
-        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+        <div id="voteCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
             @foreach ($v_anime as $i=>$anime)
-                <li data-target="#carouselExampleIndicators2" data-slide-to="{{ $i }}"
+                <li data-target="#voteCarousel" data-slide-to="{{ $i }}"
                 class="@if ($i == 0) active @endif"></li>
             @endforeach
             </ol>
             <div class="carousel-inner">
             @foreach ($v_anime as $i=>$a)
                 <div class="carousel-item @if ($i == 0) active @endif">
-                    <img class="carousel-image d-block w-100 h-100"
-                    src="{{ asset('images/featured/'.$a->anime_featured_image) }}" alt="{{ $a->anime_name }}">
-                    <div class="carousel-caption d-none d-md-block bg-dark-transparent">
-                        <h5>{{ $a->anime_name }}</h5>
-                        <p class="text-truncate">{{ $a->anime_description }}</p>
-                    </div>
+                    <a href="{{ route('display', $a->anime_id) }}" title="{{ $a->anime_name }}">
+                        <img class="carousel-image d-block w-100 h-100"
+                        src="{{ $a->anime_featured_image }}" alt="{{ $a->anime_name }}">
+                        <!-- src="{{ asset('images/featured/'.$a->anime_featured_image) }}" alt="{{ $a->anime_name }}"> -->
+                        <div class="carousel-caption d-none d-md-block bg-dark-transparent">
+                            <h5>{{ $a->anime_name }}</h5>
+                            <p class="text-truncate">{{ $a->anime_description }}</p>
+                        </div>
+                    </a>
                 </div>
             @endforeach
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#voteCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{ __('Previous') }}</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#voteCarousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{ __('Next') }}</span>
             </a>
