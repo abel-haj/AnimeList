@@ -24,9 +24,18 @@ Route::get('/anime/{id}', 'PagesController@display')->name('display');
 Route::get('/about', 'PagesController@about')->name('about');
 Route::get('/contact', 'PagesController@contact')->name('contact');
 
-Route::get('/admin/dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('/admin/manage', 'DashboardController@manage')->name('manage');
-// Route::get('/admin/anime/add', 'DashboardController@add')->name('new anime');
+Route::prefix('admin')->group(function() {
+  // authenticating admin
+  Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
+  Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+  Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+
+  Route::get('/', 'DashboardController@index')->name('admin.dashboard');
+  Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
+
+  Route::get('/manage', 'DashboardController@manage')->name('admin.manage');
+  // Route::get('/anime/add', 'DashboardController@add')->name('new anime');
+ }) ;
 
 Auth::routes(['register' => false]);
 
