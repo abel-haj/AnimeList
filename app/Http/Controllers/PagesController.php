@@ -31,8 +31,7 @@ class PagesController extends Controller
 
     public function anime()
     {
-        $all_anime =DB::Table('animes')->orderBy('anime_name', 'asc')
-        ->paginate(15);
+        $all_anime = Anime::orderBy('anime_name', 'asc')->paginate(15);
 
         $title = 'Browse All Anime';
         return view('pages.anime')->with([
