@@ -18,11 +18,10 @@ class CreateCommentsTable extends Migration
             $table->string('comment_name');
             $table->string('comment_email');
             $table->text('comment_details');
-            $table->timestamps();
-            // $table->foreign('comment_id')->references('anime_id')->on('anime')->onDelete('cascade');
             $table->unsignedBigInteger('id_anime');
-
             $table->foreign('id_anime')->references('anime_id')->on('animes');
+            // $table->foreign('comment_id')->references('anime_id')->on('anime')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
